@@ -5,7 +5,7 @@
 | Component | Current version |
 |---|---|
 | **Game** | **v0.1.1** |
-| **Launcher** | **v0.1.2** |
+| **Launcher** | **v0.1.4** |
 
 ## Game v0.1.1 — Islands, Markets & Fantasy
 

@@ -10,6 +10,19 @@ The game and launcher have separate version numbers. Downloading a new game does
 
 > ⚠️ **Compatibility warning:** Stray Shores **v0.1.1 and earlier (v0.1.0)** no longer work and are unsupported. Do not download or install these releases. Use **v0.1.7** instead.
 
+## Planned Game v0.1.8 — Expanded Food, Inventory and Crafted Wallet
+
+**v0.1.8 is a source-and-Mac-builder update, not yet a verified downloadable GitHub game release.** Launcher v0.1.6 is unchanged.
+
+- **Stack sizes:** ordinary inventory items stack up to **64**; coins are shown in stacks of **1,000**.
+- **Craft a wallet at CAMP:** 2 cloth + 2 fiber + 1 lashing. Until crafting one, you can carry only **1,000 coins as loose change**. The first wallet increases portable coin capacity to **10,000 coins**.
+- **Wallet upgrades:** from the inventory menu, spend 2 leather + 2 cloth + 2 nails to add another **10,000 coins** of capacity per upgrade.
+- **Excess earnings:** funds that exceed your carrying limit stay recorded as **unclaimed coins**, not deleted. They transfer to carried money when capacity becomes available.
+- **Separate foods:** apples, pears, peaches, plums; blueberries, raspberries, blackberries; deer venison, boar meat; trout, salmon, cod; venison stew, boar skewers, grilled fish, fish soup and berry pie, alongside legacy rations.
+- **Cooking:** raw meat and fish require cooking before eating; prepared meals restore varying hunger, health and energy.
+
+Existing save files remain supported through default values for new wallet fields. Back up saves before upgrading.
+
 ## Available game versions
 
 | Game release | Status | Highlights |

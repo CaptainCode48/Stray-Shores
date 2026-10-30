@@ -1,4 +1,5 @@
-# Stray Shores — macOS Survival Game 🏝️
+**v0.1.1** | Previous release, superseded by Game v0.1.3nded game: v0.1.3** (new character visuals and crash-report fixes). Previous game v0.1.0 and v0.1.1 are superseded, but can remain available for rollback. **Launcher stays v0.1.6.** Game v0.1.3 is currently distributed as a source-and-Mac-builder ZIP; a GitHub game asset requires building and publishing the compiled app separately.
+
 
 **Stray Shores is a Mac game for Apple Silicon (arm64), with the game builder targeting macOS 26+.**
 
@@ -11,6 +12,15 @@
 | Graphical Mac launcher | **v0.1.6** | Mac app wrapper, GUI source and one-time standalone-app builder prepared |
 
 The game and launcher have **independent versions**. Upgrading the launcher does not rename or replace a game version. Older games can remain installed.
+
+## Game v0.1.3 — Human Characters & Reliability
+
+- Human-shaped player avatars with animated arms and legs, clothing, hair, faces and distinct skin/hair/outfit palettes.
+- Customize appearance: **F8** outfit, **Shift+F8** hair, **Ctrl+F8** skin; the choices are saved with your character.
+- Startup and runtime errors now write logs to both the game-specific folder and the shared `~/Library/Application Support/Stray Shores/crash.log` path.
+- The four islands, regional markets, fantasy encounters, farming, crafting and village systems from v0.1.1 remain present.
+
+**Game v0.1.3 has not yet been verified by an interactive macOS playtest.** If it crashes, attach the crash log; the underlying cause of the previous crash is not confirmed.
 
 ## Features
 

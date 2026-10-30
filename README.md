@@ -8,6 +8,8 @@ Stray Shores is a top-down island survival and settlement game for Mac. The Mac 
 
 The game and launcher have separate version numbers. Downloading a new game does not update the launcher.
 
+> ⚠️ **Compatibility warning:** Stray Shores **v0.1.1 and earlier (v0.1.0)** no longer work and are unsupported. Do not download or install these releases. Use **v0.1.7** instead.
+
 ## Available game versions
 
 | Game release | Status | Highlights |
@@ -15,10 +17,10 @@ The game and launcher have separate version numbers. Downloading a new game does
 | **v0.1.7** | **Latest — uploaded** | Richer characters, buildings, trees, weather and lighting, enterable interiors and independent multiplayer cameras |
 | v0.1.4 | Previous release | Building shapes, construction and structural effects |
 | v0.1.3 | Previous release | Human-shaped avatars, customization and crash reporting |
-| v0.1.1 | Previous release | Islands, markets and fantasy encounters |
-| v0.1.0 | Previous release | Original survival baseline |
+| v0.1.1 | **Broken / unsupported** | Do not download or install |
+| v0.1.0 | **Broken / unsupported** | Do not download or install |
 
-Versions v0.1.2, v0.1.5 and game v0.1.6 are not part of the currently published game lineup. The **launcher remains v0.1.6**.
+**v0.1.0 and v0.1.1 are retained only as historical releases; they are known not to work.** Versions v0.1.2, v0.1.5 and game v0.1.6 are not part of the currently published game lineup. The **launcher remains v0.1.6**.
 
 ### Install and play on Mac
 

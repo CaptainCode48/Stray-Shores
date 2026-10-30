@@ -18,26 +18,118 @@ Survival, four islands, markets, villagers, settlement organizers, food preserva
 
 ## Installing the Mac launcher
 
-The redesigned launcher v0.1.6 has improved contrast, clearer Play/Download buttons and a friendly missing-catalog state instead of a raw HTTP 404.
+**Launcher version: v0.1.6.** It is separate from the game version.
 
-**The provided Launcher.app is a Python/Tk wrapper, not a self-contained signed binary.** To build a standalone Mac app:
+The Mac launcher discovers published GitHub game-release tags such as `game-v0.1.0` and `game-v0.1.1`. Each downloadable release must contain the prebuilt Mac app archive named **`Stray.Shores.zip`** (periods, not spaces). Downloaded game versions are installed separately so you can select an older version for mod compatibility.
 
-1. Install Python 3 with Tk support from python.org.
-2. Extract the launcher ZIP and run Build_and_Install_Launcher.command **once**.
-3. The builder installs PyInstaller, creates the standalone launcher and puts it in **~/Applications/Stray Shores Launcher.app**.
-4. In Finder choose **Go > Home > Applications**. Note: ~/Applications is not the system-wide /Applications folder. You can drag the built app into /Applications yourself.
-5. Open the installed application normally; you no longer need to rerun a command for every launch.
+If you are using a launcher **source/installer** package, run its included `Build_and_Install_Launcher.command` once on your Mac, then open the resulting launcher from Applications. The locally built launcher is not Apple-notarized. Do not disable Gatekeeper globally.
 
-### Apple security warnings
+## 🧩 Modding Stray Shores (for players)
 
-Locally built Stray Shores apps are **not Apple Developer ID signed or notarized**. macOS Gatekeeper may ask for approval. If you trust the app you compiled, use Finder > Open or System Settings > Privacy & Security > Open Anyway, when offered. Do not disable Gatekeeper globally.
+Mods add content or change game settings without editing the game application. **Mods are stored outside the .app** so reinstalling or updating the game does not require modifying the application bundle.
 
-## Game releases and launcher catalog
+### 1. Find your mod folder on macOS
 
-Separate source/builder ZIPs have been prepared for games **v0.1.0** and **v0.1.1**. These are **not compiled Mac applications**. A downloadable game version will only appear in the launcher once a compiled .app.zip archive and SHA-256 checksum are published in [GitHub Releases](https://github.com/CaptainCode48/Stray-Shores/releases).
+1. Launch the **game version you want to mod** at least once, then quit.
+2. In Finder, press **Shift + Command + G** (Go to Folder).
+3. Paste the appropriate folder path:
 
-The launcher supports checksum-verified game downloads, but the repository catalog has no published game assets yet. Missing catalog now results in a normal empty state.
+| Game | Global mods folder |
+| --- | --- |
+| v0.1.0 | `~/Library/Application Support/Stray Shores/versions/0.1.0/mods/` |
+| v0.1.1 | `~/Library/Application Support/Stray Shores/versions/0.1.1/mods/` |
 
-Release tags: game-v0.1.0, game-v0.1.1, launcher-v0.1.6. Older game versions are kept for rollback.
+Use the folder for the game **version** you are running, *not* the launcher version. The original game data may have been copied from an older shared Stray Shores directory on first launch.
 
-**Publishing status:** README, release workflow and catalog generator are in this public repository. Game and launcher source archives still need uploading, and the native Mac build has not been tested.
+To enable a mod for **only one save**, put it in `mods/slot_1/`, `mods/slot_2/`, etc., where the number matches that save slot. You can also drag compatible `.json` files onto a save slot's **DROP .JSON MODS HERE** area in the game.
+
+**Example:** A mod affecting only save slot 2 of game v0.1.1 goes in:
+
+```text
+~/Library/Application Support/Stray Shores/versions/0.1.1/mods/slot_2/
+```
+
+### 2. Install a mod
+
+- Prefer a **plain `.json`** data mod from a source you trust.
+- Copy the `.json` file into the global or save-specific `mods` folder above; do not copy the entire downloaded ZIP into this folder.
+- Restart the game and open **Esc → Mods for this save** to inspect its status.
+- An **ACTIVE** mod has loaded. **INVALID**, **INCOMPATIBLE**, **CONFLICT**, **BLOCKED**, and **TRUST REQUIRED** mean it needs attention. Review the status text.
+- Back up your save before adding, updating, or removing mods, particularly when experimenting with new items or buildings.
+
+### 3. Create a simple mod (JSON)
+
+Create a UTF-8 text file named `my_fishing_mod.json` containing:
+
+```json
+{
+  "name": "My Fishing Mod",
+  "mod_format": 1,
+  "fish": {
+    "moonfish": {"weight": 3, "value": 120}
+  },
+  "jokes": [
+    "The fish wants to speak to your manager."
+  ],
+  "fish_cooldown": 6,
+  "fish_bucket_capacity": 15
+}
+```
+
+Save the file in `mods/`, launch the game, and check **Esc → Mods for this save**. This is the original **format 1** mod system, intended for fishing settings and jokes.
+
+### 4. Create an expansion (mod format 2)
+
+For new items, recipes, buildings, enemies, events and encounters, use `mod_format: 2`. For example, save the following as `moonstone.json`:
+
+```json
+{
+  "name": "Moonstone Expansion",
+  "mod_format": 2,
+  "items": [
+    {"id": "moonstone", "label": "Moonstone"}
+  ],
+  "recipes": [
+    {
+      "id": "make_moonstone",
+      "output": "moonstone",
+      "quantity": 1,
+      "requires": {"stone": 2, "scrap": 1},
+      "era": 0
+    }
+  ]
+}
+```
+
+Format 2 also accepts `buildings`, `enemies`, `world_events` and `encounters`. Example definitions are included in the game source under `Game/mods/` (`example_expansion.json` and `example_encounter.json`). **Check mod compatibility against your chosen game version**; older mod packs may declare a minimum internal game version. A new mod may not work on v0.1.0 simply because it works on v0.1.1.
+
+**Dependencies:** Format 2 mods with a `requires` list must load after their dependencies. Packs load alphabetically, with global packs before slot-specific packs. Use distinct mod names and keep filenames appropriately ordered.
+
+### 5. Advanced Python plugins — use caution
+
+The game also supports save-specific **Python `.py` plugins** with explicit approval, but they are **not sandboxed** and can run arbitrary code with your user account's permissions.
+
+- Never run untrusted `.py`, `.exe`, `.dylib`, or unknown binary mods.
+- Python plugins only load from `mods/slot_N/`, not the global mods folder.
+- After reviewing the code, a user must add the plugin filename and its **SHA-256** to `mods/slot_N/trusted_python.json` under the `trusted_sha256` object.
+- Changing the plugin changes its hash and requires renewed approval.
+- Compiled libraries, executables and ZIP archives are not supported as direct mods.
+
+If you are new to modding, **start with JSON**; it is the safer supported method.
+
+### 6. Troubleshooting mods
+
+| Problem | What to check |
+| --- | --- |
+| Mod doesn't appear | Correct **game version** and save-slot folder; restart the game |
+| INCOMPATIBLE | Declared version bounds or missing dependencies |
+| INVALID | JSON syntax, unknown fields or invalid IDs/quantities |
+| CONFLICT | Two packs share an ID or declare an incompatibility |
+| Python plugin says TRUST REQUIRED | Review source and approve its exact SHA-256 |
+| Older version behaves differently | Use that version's separate mod folder and compatible mods |
+
+The launcher doesn't automatically convert mods between game versions. **Keep separate copies** of mods and save backups before upgrading or rolling back.
+
+## Game releases
+
+Downloadable game archives are published on [GitHub Releases](https://github.com/CaptainCode48/Stray-Shores/releases). The game and launcher are independently versioned. The launcher discovers `game-v...` releases and expects the game release asset `Stray.Shores.zip`, which contains the already compiled Mac `.app`. Release availability depends on what has actually been uploaded to GitHub.

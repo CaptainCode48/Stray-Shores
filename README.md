@@ -1,19 +1,35 @@
-**v0.1.1** | Previous release, superseded by Game v0.1.3nded game: v0.1.3** (new character visuals and crash-report fixes). Previous game v0.1.0 and v0.1.1 are superseded, but can remain available for rollback. **Launcher stays v0.1.6.** Game v0.1.3 is currently distributed as a source-and-Mac-builder ZIP; a GitHub game asset requires building and publishing the compiled app separately.
+# Stray Shores 🏝️ — macOS Survival Game
 
+**Latest game: v0.1.7** · **Launcher: v0.1.6** · **macOS / Apple Silicon**
 
-**Stray Shores is a Mac game for Apple Silicon (arm64), with the game builder targeting macOS 26+.**
+Stray Shores is a top-down island survival and settlement game for Mac. The Mac builder targets macOS 26+.
 
-## Versions
+**[Download game releases](https://github.com/CaptainCode48/Stray-Shores/releases)** · **[Game v0.1.7 release](https://github.com/CaptainCode48/Stray-Shores/releases/tag/game-v0.1.7)**
 
-| Component | Version | Packaging |
+The game and launcher have separate version numbers. Downloading a new game does not update the launcher.
+
+## Available game versions
+
+| Game release | Status | Highlights |
 | --- | --- | --- |
-| Game baseline | **v0.1.0** | Standalone source and Mac builder ZIP prepared |
-| Game islands, markets & fantasy | **v0.1.1** | Separate source and Mac builder ZIP prepared |
-| Graphical Mac launcher | **v0.1.6** | Mac app wrapper, GUI source and one-time standalone-app builder prepared |
+| **v0.1.7** | **Latest — uploaded** | Richer characters, buildings, trees, weather and lighting, enterable interiors and independent multiplayer cameras |
+| v0.1.4 | Previous release | Building shapes, construction and structural effects |
+| v0.1.3 | Previous release | Human-shaped avatars, customization and crash reporting |
+| v0.1.1 | Previous release | Islands, markets and fantasy encounters |
+| v0.1.0 | Previous release | Original survival baseline |
 
-The game and launcher have **independent versions**. Upgrading the launcher does not rename or replace a game version. Older games can remain installed.
+Versions v0.1.2, v0.1.5 and game v0.1.6 are not part of the currently published game lineup. The **launcher remains v0.1.6**.
 
-## Game v0.1.3 — Human Characters & Reliability
+### Install and play on Mac
+
+1. Download the compiled app asset **`Stray.Shores.zip`** from a game release, or choose the corresponding version in the Stray Shores Launcher.
+2. The release ZIP should contain the built **`Stray Shores.app`**. It is not the source-and-builder ZIP.
+3. If installing manually, extract the archive and open the application. To use multiple game versions, install them through the launcher so they remain separate.
+4. The launcher selects from published release tags such as `game-v0.1.7`. Downloads require that release's asset to exist.
+
+*The v0.1.7 release was reported uploaded by the maintainer; the binary ZIP contents have not been independently verified here.*
+
+## Earlier milestone — Game v0.1.3
 
 - Human-shaped player avatars with animated arms and legs, clothing, hair, faces and distinct skin/hair/outfit palettes.
 - Customize appearance: **F8** outfit, **Shift+F8** hair, **Ctrl+F8** skin; the choices are saved with your character.
@@ -30,7 +46,7 @@ Survival, four islands, markets, villagers, settlement organizers, food preserva
 
 **Launcher version: v0.1.6.** It is separate from the game version.
 
-The Mac launcher discovers published GitHub game-release tags such as `game-v0.1.0` and `game-v0.1.1`. Each downloadable release must contain the prebuilt Mac app archive named **`Stray.Shores.zip`** (periods, not spaces). Downloaded game versions are installed separately so you can select an older version for mod compatibility.
+The Mac launcher discovers published GitHub game-release tags such as `game-v0.1.7`, `game-v0.1.4` and earlier published releases. Each downloadable release must contain the prebuilt Mac app archive named **`Stray.Shores.zip`** (periods, not spaces). Downloaded game versions are installed separately so you can select an older version for mod compatibility.
 
 If you are using a launcher **source/installer** package, run its included `Build_and_Install_Launcher.command` once on your Mac, then open the resulting launcher from Applications. The locally built launcher is not Apple-notarized. Do not disable Gatekeeper globally.
 

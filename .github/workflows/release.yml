@@ -1,0 +1,57 @@
+name: Build Mac game and update catalog
+on:
+  push:
+    tags:
+      - 'game-v*'
+      - 'launcher-v*'
+permissions:
+  contents: write
+jobs:
+  mac-game:
+    if: startsWith(github.ref_name, 'game-v')
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify source is present
+        shell: bash
+        run: |
+          test -f Game/game.py
+          test -f Build_Standalone_ARM64_on_Mac.command
+          test -f scripts/update_catalog.py
+      - name: Build app
+        run: bash Build_Standalone_ARM64_on_Mac.command
+      - name: Zip Mac app
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="${GITHUB_REF_NAME#game-v}"
+          mkdir -p dist-release
+          NAME="Stray_Shores_${VERSION}_macOS26_arm64.app.zip"
+          ditto -c -k --sequesterRsrc --keepParent "build-output/Stray Shores.app" "dist-release/$NAME"
+          shasum -a 256 "dist-release/$NAME" | awk '{print $1}' > "dist-release/$NAME.sha256"
+      - name: Publish game version
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist-release/* --title "Stray Shores Game ${GITHUB_REF_NAME#game-}" --generate-notes
+      - name: Refresh release catalog
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/update_catalog.py
+  launcher:
+    if: startsWith(github.ref_name, 'launcher-v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Package latest launcher only
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f Version_Launcher.py
+          VERSION="${GITHUB_REF_NAME#launcher-v}"
+          zip "Stray_Shores_Launcher_${VERSION}.zip" Version_Launcher.py Launch_Version_Manager.command
+          echo "LAUNCHER_ARCHIVE=Stray_Shores_Launcher_${VERSION}.zip" >> "$GITHUB_ENV"
+      - name: Publish launcher
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create "$GITHUB_REF_NAME" "$LAUNCHER_ARCHIVE" --title "Stray Shores Launcher ${GITHUB_REF_NAME#launcher-}" --generate-notes

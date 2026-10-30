@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | Game baseline | **v0.1.0** | Standalone source and Mac builder ZIP prepared |
 | Game islands, markets & fantasy | **v0.1.1** | Separate source and Mac builder ZIP prepared |
-| Graphical Mac launcher | **v0.1.4** | Mac app wrapper, GUI source and one-time standalone-app builder prepared |
+| Graphical Mac launcher | **v0.1.6** | Mac app wrapper, GUI source and one-time standalone-app builder prepared |
 
 The game and launcher have **independent versions**. Upgrading the launcher does not rename or replace a game version. Older games can remain installed.
 
@@ -18,7 +18,7 @@ Survival, four islands, markets, villagers, settlement organizers, food preserva
 
 ## Installing the Mac launcher
 
-The redesigned launcher v0.1.4 has improved contrast, clearer Play/Download buttons and a friendly missing-catalog state instead of a raw HTTP 404.
+The redesigned launcher v0.1.6 has improved contrast, clearer Play/Download buttons and a friendly missing-catalog state instead of a raw HTTP 404.
 
 **The provided Launcher.app is a Python/Tk wrapper, not a self-contained signed binary.** To build a standalone Mac app:
 
@@ -38,6 +38,6 @@ Separate source/builder ZIPs have been prepared for games **v0.1.0** and **v0.1.
 
 The launcher supports checksum-verified game downloads, but the repository catalog has no published game assets yet. Missing catalog now results in a normal empty state.
 
-Release tags: game-v0.1.0, game-v0.1.1, launcher-v0.1.4. Older game versions are kept for rollback.
+Release tags: game-v0.1.0, game-v0.1.1, launcher-v0.1.6. Older game versions are kept for rollback.
 
 **Publishing status:** README, release workflow and catalog generator are in this public repository. Game and launcher source archives still need uploading, and the native Mac build has not been tested.

@@ -1,69 +1,47 @@
-# Stray Shores 🏝️ — macOS Survival Game
+# Stray Shores — Mac Survival Game
 
-**Latest game: v0.1.7** · **Launcher: v0.1.6** · **macOS / Apple Silicon**
+## WHAT'S NEW — Game v0.1.8 (Preview Build)
+Game v0.1.8 expands the inventory, food and crafting systems.
+Ordinary items now stack up to 64; coins stack up to 1,000.
+Craft a wallet from cloth, fiber and lashings to carry up to 10,000 coins.
+Additional wallet upgrades increase carrying capacity.
+Find varied fruits, berries, fish, meat and cooked meals.
+The v0.1.8 game update is currently a source-and-Mac-builder package, not a confirmed GitHub release.
 
-Stray Shores is a top-down island survival and settlement game for Mac. The Mac builder targets macOS 26+.
+## LATEST PUBLISHED GAME — v0.1.7
+Game v0.1.7 adds improved characters, buildings, foliage and environmental detail.
+Explore with independent multiplayer cameras, enter buildings and see richer lighting.
+Launcher version: v0.1.6 (maintained separately).
+Important: Game v0.1.0 and v0.1.1 are broken and unsupported. Use v0.1.7.
 
-**[Download game releases](https://github.com/CaptainCode48/Stray-Shores/releases)** · **[Game v0.1.7 release](https://github.com/CaptainCode48/Stray-Shores/releases/tag/game-v0.1.7)**
+## About the game
 
-The game and launcher have separate version numbers. Downloading a new game does not update the launcher.
+Stray Shores is a top-down island-survival and settlement game for Apple Silicon Macs; the Mac builder targets macOS 26+. Features include exploration, markets, crafting, farming, housing, villagers, fishing, pottery, glassmaking, equipment customization, and the rare Money Tree.
 
-> ⚠️ **Compatibility warning:** Stray Shores **v0.1.1 and earlier (v0.1.0)** no longer work and are unsupported. Do not download or install these releases. Use **v0.1.7** instead.
+## Released game versions
 
-## Planned Game v0.1.8 — Expanded Food, Inventory and Crafted Wallet
+| Game version | Status |
+| --- | --- |
+| **v0.1.7** | Latest reported uploaded release |
+| v0.1.4 | Previous release |
+| v0.1.3 | Previous release |
+| v0.1.1 | Broken — do not install |
+| v0.1.0 | Broken — do not install |
+| v0.1.8 | Preview source/builder only, not confirmed released |
 
-**v0.1.8 is a source-and-Mac-builder update, not yet a verified downloadable GitHub game release.** Launcher v0.1.6 is unchanged.
+Game versions v0.1.2, v0.1.5 and v0.1.6 are not part of the published release lineup. Version numbers for the launcher are separate.
 
-- **Stack sizes:** ordinary inventory items stack up to **64**; coins are shown in stacks of **1,000**.
-- **Craft a wallet at CAMP:** 2 cloth + 2 fiber + 1 lashing. Until crafting one, you can carry only **1,000 coins as loose change**. The first wallet increases portable coin capacity to **10,000 coins**.
-- **Wallet upgrades:** from the inventory menu, spend 2 leather + 2 cloth + 2 nails to add another **10,000 coins** of capacity per upgrade.
-- **Excess earnings:** funds that exceed your carrying limit stay recorded as **unclaimed coins**, not deleted. They transfer to carried money when capacity becomes available.
-- **Separate foods:** apples, pears, peaches, plums; blueberries, raspberries, blackberries; deer venison, boar meat; trout, salmon, cod; venison stew, boar skewers, grilled fish, fish soup and berry pie, alongside legacy rations.
-- **Cooking:** raw meat and fish require cooking before eating; prepared meals restore varying hunger, health and energy.
+## Download and installation
 
-Existing save files remain supported through default values for new wallet fields. Back up saves before upgrading.
+See [GitHub Releases](https://github.com/CaptainCode48/Stray-Shores/releases). The launcher discovers the actual published game tags (for example `game-v0.1.7`) and downloads their asset named exactly `Stray.Shores.zip`, which must contain the compiled Mac application. A source/builder ZIP is not an installable game binary.
 
-## Available game versions
+Install the Mac launcher from its package using `Build_and_Install_Launcher.command` once, then launch from Applications. Locally built binaries are not signed or notarized by Apple; use normal macOS security approval if you trust the app. Never disable Gatekeeper globally.
 
-| Game release | Status | Highlights |
-| --- | --- | --- |
-| **v0.1.7** | **Latest — uploaded** | Richer characters, buildings, trees, weather and lighting, enterable interiors and independent multiplayer cameras |
-| v0.1.4 | Previous release | Building shapes, construction and structural effects |
-| v0.1.3 | Previous release | Human-shaped avatars, customization and crash reporting |
-| v0.1.1 | **Broken / unsupported** | Do not download or install |
-| v0.1.0 | **Broken / unsupported** | Do not download or install |
+## Launcher README integration
 
-**v0.1.0 and v0.1.1 are retained only as historical releases; they are known not to work.** Versions v0.1.2, v0.1.5 and game v0.1.6 are not part of the currently published game lineup. The **launcher remains v0.1.6**.
+The launcher v0.1.6 reads this README from the repository's `main` branch when it starts and when you press Refresh. It shows an opening preview in **What's New** and the full text in a scrollable **View Full History** window. When offline, it displays the last cached README.
 
-### Install and play on Mac
-
-1. Download the compiled app asset **`Stray.Shores.zip`** from a game release, or choose the corresponding version in the Stray Shores Launcher.
-2. The release ZIP should contain the built **`Stray Shores.app`**. It is not the source-and-builder ZIP.
-3. If installing manually, extract the archive and open the application. To use multiple game versions, install them through the launcher so they remain separate.
-4. The launcher selects from published release tags such as `game-v0.1.7`. Downloads require that release's asset to exist.
-
-*The v0.1.7 release was reported uploaded by the maintainer; the binary ZIP contents have not been independently verified here.*
-
-## Earlier milestone — Game v0.1.3
-
-- Human-shaped player avatars with animated arms and legs, clothing, hair, faces and distinct skin/hair/outfit palettes.
-- Customize appearance: **F8** outfit, **Shift+F8** hair, **Ctrl+F8** skin; the choices are saved with your character.
-- Startup and runtime errors now write logs to both the game-specific folder and the shared `~/Library/Application Support/Stray Shores/crash.log` path.
-- The four islands, regional markets, fantasy encounters, farming, crafting and village systems from v0.1.1 remain present.
-
-**Game v0.1.3 has not yet been verified by an interactive macOS playtest.** If it crashes, attach the crash log; the underlying cause of the previous crash is not confirmed.
-
-## Features
-
-Survival, four islands, markets, villagers, settlement organizers, food preservation, soil water and N/P/K nutrients, fruit trees, the rare Money Tree, five chest rarity classes, furniture, woodworking, pottery, glass and metal crafting. Game v0.1.1 adds regional markets and fantasy encounters.
-
-## Installing the Mac launcher
-
-**Launcher version: v0.1.6.** It is separate from the game version.
-
-The Mac launcher discovers published GitHub game-release tags such as `game-v0.1.7`, `game-v0.1.4` and earlier published releases. Each downloadable release must contain the prebuilt Mac app archive named **`Stray.Shores.zip`** (periods, not spaces). Downloaded game versions are installed separately so you can select an older version for mod compatibility.
-
-If you are using a launcher **source/installer** package, run its included `Build_and_Install_Launcher.command` once on your Mac, then open the resulting launcher from Applications. The locally built launcher is not Apple-notarized. Do not disable Gatekeeper globally.
+The opening sections above intentionally use short, standalone lines so the launcher preview remains readable. **The README is informational**: available downloadable game versions are determined by GitHub Releases and their actual `Stray.Shores.zip` assets.
 
 ## 🧩 Modding Stray Shores (for players)
 
